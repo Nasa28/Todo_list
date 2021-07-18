@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/Nasa28/Todo_list#readme",
   "devDependencies": {
+    "css-loader": "^6.1.0",
+    "style-loader": "^3.1.0",
     "webpack": "^5.45.1",
     "webpack-cli": "^4.7.2"
   }
