@@ -10,3 +10,7 @@ nav {
   background-color: blueviolet;
 }
 
+#main-form {
+  margin: 30px auto;
+  width: 80%;
+}
