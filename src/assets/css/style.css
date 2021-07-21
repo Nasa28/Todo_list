@@ -4,12 +4,21 @@
   box-sizing: border-box;
 }
 
-nav {
-  text-align: center;
+h1 {
+  
   padding: 25px;
-  background-color: blueviolet;
+  background-color: rgb(207, 200, 214);
 }
 
+nav {
+  border: 2px solid;
+  width: fit-content;
+  background:rgb(196, 191, 191);
+}
+
+ul{
+  list-style-type: none;
+}
 #main-form {
   margin: 30px auto;
   width: 80%;

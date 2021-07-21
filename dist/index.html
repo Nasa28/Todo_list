@@ -8,19 +8,31 @@
   <title>ToDo List</title>
 </head>
 <body>
-  <div id="content" class="container mt-3">
-    <h1 class = "display-4 text-center fw-bold">To-do List</h1>
-    <div id="btn-main">
-      <button type="button" value="Project" class = "fw-bold btn btn-primary" data-bs-toggle="modal" data-bs-target="#project">Project</button>
-    </div>
+  <h1 class = "display-4 text-center fw-bold">To-do List</h1>
+    <nav>
+      <ul>
+       <li>
+        <input type="button" value="ALL Todos"  class = "fw-bold btn m-5 btn-primary" data-bs-toggle="modal" data-bs-target="#all-todo">
+       </li> 
+       
+       <li>
+        <input type="button" value="PROJECT"  class = "fw-bold btn m-5 btn-primary" data-bs-toggle="modal" data-bs-target="#project">
+       </li> 
 
-  </div>
+       <li>
+        <input type="button" value="Add a Task"  class = "fw-bold btn btn-primary m-5" data-bs-toggle="modal" data-bs-target="#task">
+       </li> 
+      </ul>
+    </nav>
+  <div id="content" class="container mt-3">
+    
+    </div>
         <!-- Modal -->
-        <div class="modal fade" id="project" tabindex="-1"       aria-hidden="true">
+        <div class="modal fade" id="task" tabindex="-1"       aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <div class="project">
@@ -53,9 +65,32 @@
                     <div class="form-group">
                     <input type="submit" value="Create" class = "form-control fw-bold btn btn-primary">
                   </div>
-                  </form>
-                
-                                     
+                  </form>                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         <!-- Modal -->
+         <div class="modal fade" id="project" tabindex="-1"       aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="project">
+                  <h3 class="title fw-bold text-center">New project</h3>
+                  <form id="main-form">
+
+                    <div class = "form-group ">
+                      <label for="author">Name </label>
+                      <input type="text" name="author" id="author" class="form-control mb-3" required>
+                    </div>
+                    <div class="form-group">
+                    <input type="submit" value="New project" class = "form-control fw-bold btn btn-primary">
+                  </div>
+                  </form>                  
                 </div>
               </div>
             </div>
