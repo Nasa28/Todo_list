@@ -11,6 +11,36 @@ h2.textContent = "List of Pending todos"
 myLibrary =[]
 content.appendChild(h2)
 
+
+// Storage class 
+
+class Store {
+  static getTask(){
+    let tasks;
+    if (localStorage.getItem('tasks') === null){
+      tasks = []
+    }else {
+      tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+    return tasks
+  }
+
+  static addTasks(task){
+    const tasks = Store.getTask()
+    tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }
+ 
+  static deleteTask(title){
+    const tasks = Store.getTask()
+    tasks.forEach((task, index) =>{
+      if (task.title === title){
+        tasks.splice(index, 1)
+      }
+    })
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }
+}
 //Task class goes in here
 
 class Task{
@@ -89,7 +119,7 @@ document.getElementById('main-form').addEventListener('submit', (event) => {
     title.value ==='' ||
     description.value === '' ||
     dueDate.value === ''||
-    priority.value
+    priority.value === ''
   ){
     alert('Please fill all fields')
   }
@@ -104,9 +134,6 @@ document.getElementById('main-form').addEventListener('submit', (event) => {
       Task.resetFields();
   }
 
-  
-  // myLibrary.push(addBookToLibrary(book));
-  // addBook(book);
   // window.location.reload();
 });
 
