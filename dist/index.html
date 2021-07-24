@@ -9,14 +9,15 @@
 </head>
 <body>
   <h1 class = "display-4 text-center fw-bold">To-do List</h1>
+  <div class="main">
     <nav>
       <ul>
        <li>
-        <input type="button" value="ALL Todos"  class = "fw-bold btn m-5 btn-primary" data-bs-toggle="modal" data-bs-target="#all-todo">
+        <input type="button" value="ALL Todos"  class = "fw-bold btn m-5 btn-primary todos" data-bs-toggle="modal" data-bs-target="#all-todo">
        </li> 
        
-       <li>
-        <input type="button" value="PROJECT"  class = "fw-bold btn m-5 btn-primary" data-bs-toggle="modal" data-bs-target="#project">
+       <li id = "prop">
+        <input type="button" value="PROJECTS"  class = "fw-bold btn m-5 btn-primary project" data-bs-toggle="modal" data-bs-target="#project">
        </li> 
 
        <li>
@@ -24,9 +25,11 @@
        </li> 
       </ul>
     </nav>
-  <div id="content" class="container mt-3">
+  <div id="content" class="container text-align-center mt-3">
     
     </div>
+
+  </div>
         <!-- Modal -->
         <div class="modal fade" id="task" tabindex="-1"       aria-hidden="true">
           <div class="modal-dialog">
@@ -41,29 +44,29 @@
 
                     <div class = "form-group ">
                       <label for="author">Title </label>
-                      <input type="text" name="author" id="author" class="form-control mb-3" required>
+                      <input type="text" name="title" id="title" class="form-control mb-3">
                     </div>
                 
                     <div class = "form-group">
                       <label for="title">Description</label>
-                      <textarea name="Description" name="title" id="title" class="form-control mb-3" required></textarea>
+                      <textarea name="Description" id="description" class="form-control mb-3" ></textarea>
                     </div>
-                
+                 
                     <div class = "form-group">
                       <label for="pages">DueDate</label>
-                      <input type="date" name="pages" id="pages" class = "form-control mb-3" required>
-                    </div>
-                
+                      <input type="date" name="DueDate" id="dueDate" class = "form-control mb-3" >
+                    </div> 
+
                     <div class = "form-group mb-3">
                       <label for="priority"> priority</label><br>
-                      <select name="priority" id="priority"  required> 
-                        <option value="High" id="high">High</option>
+                      <select name="priority" id="priority"  > 
+                        <option value="High" id="high" >High</option>
                         <option value="Medium" id="medium">Medium</option>
                         <option value="Low" id="low">Low</option>
                       </select>
                     </div>
                     <div class="form-group">
-                    <input type="submit" value="Create" class = "form-control fw-bold btn btn-primary">
+                    <input type="submit" value="Submit" class = "form-control fw-bold btn btn-primary">
                   </div>
                   </form>                  
                 </div>
@@ -81,14 +84,14 @@
               <div class="modal-body">
                 <div class="project">
                   <h3 class="title fw-bold text-center">New project</h3>
-                  <form id="main-form">
+                  <form id="project-form">
 
                     <div class = "form-group ">
-                      <label for="author">Name </label>
-                      <input type="text" name="author" id="author" class="form-control mb-3" required>
+                      <label for="proName">Name </label>
+                      <input type="text" name="proName" id="proName" class="form-control mb-3" required>
                     </div>
                     <div class="form-group">
-                    <input type="submit" value="New project" class = "form-control fw-bold btn btn-primary">
+                    <input type="submit" value="submit" class = "form-control fw-bold btn btn-primary">
                   </div>
                   </form>                  
                 </div>

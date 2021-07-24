@@ -11,9 +11,18 @@ h1 {
 }
 
 nav {
-  border: 2px solid;
+  border: 1px solid;
   width: fit-content;
-  background:rgb(196, 191, 191);
+  /* background:rgb(196, 191, 191); */
+  height: 100%;
+}
+
+.main{
+display: flex;
+}
+
+.container{
+  text-align: center;
 }
 
 ul{
@@ -22,4 +31,9 @@ ul{
 #main-form {
   margin: 30px auto;
   width: 80%;
+}
+
+.card {
+  width: 30rem;
+  margin: 10px auto;
 }
