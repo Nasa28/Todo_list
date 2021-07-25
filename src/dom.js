@@ -63,7 +63,8 @@ class Task{
 class UI{
   static displayTask(){ 
     const todos =Store.getTodos()
-    todos.forEach((task) => UI.addTask(task));
+    for(let task of todos)
+    UI.addTask(task)
   }
     
 
@@ -78,7 +79,7 @@ class UI{
         <li class="list-group-item">${task.priority}</li>
       </ul>
       <div class="card-footer">
-        <a href="#" class="delete text-danger text-decoration-none">Remove task</a>
+        <a href="#" class="delete text-danger text-decoration-none fw-bold">Remove task</a>
       </div>
     </div>
     `;
@@ -86,7 +87,7 @@ class UI{
   }
 
   static removeTask(ele){
-    if(ele.className.includes('delete')){
+    if(ele.classList.contains('delete')){
       ele.parentElement.parentElement.remove();
     }
   }
@@ -117,7 +118,8 @@ document.getElementById('main-form').addEventListener('submit', (event) => {
 // Add event listener for delete 
 
 content.addEventListener('click', (event) =>{
-  UI.removeTask(event.target)
+   UI.removeTask(event.target)
+   Store.deleteTodos(event.target.parentElement.previousElementSibling.firstElementChild.textContent)
 })
 
  
