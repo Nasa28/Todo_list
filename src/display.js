@@ -1,4 +1,6 @@
-class Display{
+ import Store from './storage';
+
+ class Display{
   static displayTask(){ 
     const todos =Store.getTodos()
     for(let task of todos)
@@ -30,3 +32,5 @@ class Display{
     }
   }
 }
+
+export default Display

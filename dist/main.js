@@ -757,13 +757,25 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, style) {\
 
 /***/ }),
 
+/***/ "./src/display.js":
+/*!************************!*\
+  !*** ./src/display.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage */ \"./src/storage.js\");\n \n\n class Display{\n  static displayTask(){ \n    const todos =_storage__WEBPACK_IMPORTED_MODULE_0__.default.getTodos()\n    for(let task of todos)\n    Display.addTask(task)\n  }\n    \n\n  static addTask(task){\n    const div = document.createElement('div');\n    div.innerHTML = `\n    <div class=\"card mb-5 border-3\" style=\"width: 30rem;\">\n      <ul class=\"list-group list-group-flush\">\n        <li class=\"list-group-item\">${task.title}</li>\n        <li class=\"list-group-item\">${task.description}</li>\n        <li class=\"list-group-item\">${task.dueDate}</li>\n        <li class=\"list-group-item\">${task.priority}</li>\n      </ul>\n      <div class=\"card-footer\">\n        <a href=\"#\" class=\"delete text-danger text-decoration-none fw-bold\">Remove task</a>\n      </div>\n    </div>\n    `;\n    content.appendChild(div)\n  }\n\n  static removeTask(ele){\n    if(ele.classList.contains('delete')){\n      ele.parentElement.parentElement.remove();\n    }\n  }\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Display);\n\n//# sourceURL=webpack://my_todo_list/./src/display.js?");
+
+/***/ }),
+
 /***/ "./src/dom.js":
 /*!********************!*\
   !*** ./src/dom.js ***!
   \********************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("const content = document.getElementById('content');\nconst title = document.getElementById('title');\nconst description = document.getElementById('description');\nconst dueDate = document.getElementById('dueDate');\nconst name = document.getElementById('name');\nconst priority = document.getElementById('priority')\n \nconst h2 = document.createElement('h2');\nh2.textContent = \"List of Pending todos\"\n\ncontent.appendChild(h2)\n\n\n// Storage class \n\nclass Store {\n  static getTodos(){\n    let tasks;\n    if(localStorage.getItem('tasks') === null){\n      tasks = [];\n    }else {\n      tasks = JSON.parse(localStorage.getItem('tasks'));\n    }\n    return tasks\n  }\n\n  static addTodos(task){\n    const tasks = Store.getTodos()\n    tasks.push(task);\n    localStorage.setItem('tasks', JSON.stringify(tasks))\n  }\n \n  static deleteTodos(title){\n    const tasks = Store.getTodos()\n    tasks.forEach((task, index) =>{\n      if (task.title === title){\n        tasks.splice(index, 1)\n      }\n    })\n    localStorage.setItem('tasks', JSON.stringify(tasks))\n  }\n}\n//Task class goes in here\n\nclass Task{\n  constructor(title, description, dueDate, priority){\n    this.title = title;\n    this.description = description;\n    this.dueDate = dueDate;\n    this.priority = priority\n  }\n\n  static resetFields(){\n    title.value = ''\n    description.value =''\n    dueDate.value =''\n    priority.value =''\n  }\n}\n\n//UI class goes in here\n\nclass UI{\n  static displayTask(){ \n    const todos =Store.getTodos()\n    for(let task of todos)\n    UI.addTask(task)\n  }\n    \n\n  static addTask(task){\n    const div = document.createElement('div');\n    div.innerHTML = `\n    <div class=\"card mb-5 border-3\" style=\"width: 30rem;\">\n      <ul class=\"list-group list-group-flush\">\n        <li class=\"list-group-item\">${task.title}</li>\n        <li class=\"list-group-item\">${task.description}</li>\n        <li class=\"list-group-item\">${task.dueDate}</li>\n        <li class=\"list-group-item\">${task.priority}</li>\n      </ul>\n      <div class=\"card-footer\">\n        <a href=\"#\" class=\"delete text-danger text-decoration-none fw-bold\">Remove task</a>\n      </div>\n    </div>\n    `;\n    content.appendChild(div)\n  }\n\n  static removeTask(ele){\n    if(ele.classList.contains('delete')){\n      ele.parentElement.parentElement.remove();\n    }\n  }\n}\n\ndocument.addEventListener('DOMContentLoaded', UI.displayTask())\n  \n\ndocument.getElementById('main-form').addEventListener('submit', (event) => {\n  event.preventDefault();\n\n  // input Validation\n\n  const task = new Task(\n    title.value,\n    description.value,\n    dueDate.value,\n    priority.value\n  );\n  UI.addTask(task) \n  Store.addTodos(task) \n  window.location.reload();\n  Task.resetFields();\n      \n\n});\n\n// Add event listener for delete \n\ncontent.addEventListener('click', (event) =>{\n   UI.removeTask(event.target)\n   Store.deleteTodos(event.target.parentElement.previousElementSibling.firstElementChild.textContent)\n})\n\n \n\n//# sourceURL=webpack://my_todo_list/./src/dom.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage */ \"./src/storage.js\");\n/* harmony import */ var _display__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./display */ \"./src/display.js\");\n/* harmony import */ var _task__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./task */ \"./src/task.js\");\n/* harmony import */ var _remove__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./remove */ \"./src/remove.js\");\n\n\n\n\nconst content = document.getElementById('content');\nconst title = document.getElementById('title');\nconst description = document.getElementById('description');\nconst dueDate = document.getElementById('dueDate');\n const main= document.getElementById('main-form');\nconst priority = document.getElementById('priority')\n \nconst h2 = document.createElement('h2');\nh2.textContent = \"List of Pending todos\"\n\ncontent.appendChild(h2)\n\ndocument.addEventListener('DOMContentLoaded', _display__WEBPACK_IMPORTED_MODULE_1__.default.displayTask())\n\nmain.addEventListener('submit', (event) => {\n  event.preventDefault();\n    \n  const task = new _task__WEBPACK_IMPORTED_MODULE_2__.default(\n    title.value,\n    description.value,\n    dueDate.value,\n    priority.value\n  );\n  _display__WEBPACK_IMPORTED_MODULE_1__.default.addTask(task) \n  _storage__WEBPACK_IMPORTED_MODULE_0__.default.addTodos(task) \n  window.location.reload();\n  _task__WEBPACK_IMPORTED_MODULE_2__.default.resetFields();   \n\n});\n\ncontent.addEventListener('click', (event) =>{\n   (0,_remove__WEBPACK_IMPORTED_MODULE_3__.default)(event.target)\n   _storage__WEBPACK_IMPORTED_MODULE_0__.default.deleteTodos(event.target.parentElement.previousElementSibling.firstElementChild.textContent)\n})\n\n \n\n//# sourceURL=webpack://my_todo_list/./src/dom.js?");
 
 /***/ }),
 
@@ -774,7 +786,50 @@ eval("const content = document.getElementById('content');\nconst title = documen
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/css/style.css */ \"./src/assets/css/style.css\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n/* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dom.js */ \"./src/dom.js\");\n/* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_dom_js__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\n\n\n\n\n//# sourceURL=webpack://my_todo_list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/css/style.css */ \"./src/assets/css/style.css\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n/* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dom.js */ \"./src/dom.js\");\n/* harmony import */ var _display__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./display */ \"./src/display.js\");\n\n\n\n\n\n\n\n\n\n\n\n\n//# sourceURL=webpack://my_todo_list/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/remove.js":
+/*!***********************!*\
+  !*** ./src/remove.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ removeTask)\n/* harmony export */ });\n function removeTask(ele){\n  if(ele.classList.contains('delete')){\n    ele.parentElement.parentElement.remove();\n  }\n}\n\n\n\n//# sourceURL=webpack://my_todo_list/./src/remove.js?");
+
+/***/ }),
+
+/***/ "./src/storage.js":
+/*!************************!*\
+  !*** ./src/storage.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nclass Store {\n  static getTodos(){\n    let tasks;\n    if(localStorage.getItem('tasks') === null){\n      tasks = [];\n    }else {\n      tasks = JSON.parse(localStorage.getItem('tasks'));\n    }\n    return tasks\n  }\n\n  static addTodos(task){\n    const tasks = Store.getTodos()\n    tasks.push(task);\n    localStorage.setItem('tasks', JSON.stringify(tasks))\n  }\n \n  static deleteTodos(title){\n    const tasks = Store.getTodos()\n    tasks.forEach((task, index) =>{\n      if (task.title === title){\n        tasks.splice(index, 1)\n      }\n    })\n    localStorage.setItem('tasks', JSON.stringify(tasks))\n  }\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Store);\n\n//# sourceURL=webpack://my_todo_list/./src/storage.js?");
+
+/***/ }),
+
+/***/ "./src/task.js":
+/*!*********************!*\
+  !*** ./src/task.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _display__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./display */ \"./src/display.js\");\n/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dom */ \"./src/dom.js\");\n/* harmony import */ var _todos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./todos */ \"./src/todos.js\");\n/* harmony import */ var _todos__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_todos__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\nclass Task{\n  constructor(title, description, dueDate, priority){\n   this.title = title;\n    this.description = description;\n    this.dueDate = dueDate;\n    this.priority = priority\n  }\n\n  static resetFields(){\n    title.value = ''\n    description.value =''\n    dueDate.value =''\n    priority.value =''\n  }\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Task);\n\n//# sourceURL=webpack://my_todo_list/./src/task.js?");
+
+/***/ }),
+
+/***/ "./src/todos.js":
+/*!**********************!*\
+  !*** ./src/todos.js ***!
+  \**********************/
+/***/ (() => {
+
+eval("\n\n//# sourceURL=webpack://my_todo_list/./src/todos.js?");
 
 /***/ })
 
