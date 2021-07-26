@@ -28,10 +28,10 @@ display: flex;
 ul{
   list-style-type: none;
 }
-#main-form {
+/* #main-form {
   margin: 30px auto;
   width: 80%;
-}
+} */
 
 .card {
   width: 30rem;

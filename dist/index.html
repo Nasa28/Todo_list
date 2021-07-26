@@ -11,17 +11,20 @@
   <h1 class = "display-4 text-center fw-bold">To-do List</h1>
   <div class="main">
     <nav>
-      <ul>
-       <li>
-        <input type="button" value="ALL Todos"  class = "fw-bold btn m-5 btn-primary todos" data-bs-toggle="modal" data-bs-target="#all-todo">
+      <ul class="nav m-5" >
+       <li class="nav-item">
+        <input type="button" value="ALL Todos"  class = "fw-bold btn  btn-primary todos" data-bs-toggle="modal" data-bs-target="#all-todo">
        </li> 
-       
-       <li id = "prop">
-        <input type="button" value="PROJECTS"  class = "fw-bold btn m-5 btn-primary project" data-bs-toggle="modal" data-bs-target="#project">
+      </ul>
+      <ul class="nav m-5">
+       <li id = "prop" class="nav-item ">
+        <input type="button" value="PROJECTS"  class = "fw-bold btn  btn-primary project" >
        </li> 
-
-       <li>
-        <input type="button" value="Add a Task"  class = "fw-bold btn btn-primary m-5" data-bs-toggle="modal" data-bs-target="#task">
+       <li class="nav-item" data-bs-toggle="modal" data-bs-target="#project"><a href="#" class="nav-link fw-bold fs-5 ">NEW</a></li>
+      </ul>
+      <ul class="nav m-5">
+       <li class="nav-item">
+        <input type="button" value="Add a Task"  class = "fw-bold btn btn-primary " data-bs-toggle="modal" data-bs-target="#task">
        </li> 
       </ul>
     </nav>
@@ -89,6 +92,7 @@
                     <div class = "form-group ">
                       <label for="proName">Name </label>
                       <input type="text" name="proName" id="proName" class="form-control mb-3" required>
+                      
                     </div>
                     <div class="form-group">
                     <input type="submit" value="submit" class = "form-control fw-bold btn btn-primary">
