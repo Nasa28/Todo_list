@@ -31,6 +31,10 @@
       ele.parentElement.parentElement.remove();
     }
   }
+
+  
 }
+
+
 
 export default Display
