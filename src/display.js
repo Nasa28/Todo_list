@@ -1,5 +1,5 @@
  import Store from './storage';
-//  const content = document.getElementById('content');
+  const content = document.getElementById('content');
  class Display{
   static displayTask(){ 
     const todos =Store.getTodos()
