@@ -1,5 +1,5 @@
  import Store from './storage';
-
+//  const content = document.getElementById('content');
  class Display{
   static displayTask(){ 
     const todos =Store.getTodos()
@@ -7,7 +7,6 @@
     Display.addTask(task)
   }
     
-
   static addTask(task){
     const div = document.createElement('div');
     div.innerHTML = `
@@ -32,9 +31,22 @@
     }
   }
 
-  
+
+  static displayProject(){ 
+    const projects =Store.getProject()
+    for(let project of projects)
+    Display.addProjects(project)
+  }
+  static addProjects(project){
+    const ul = document.getElementById('next')
+    const newul = document.createElement('ul')
+    const li = document.createElement('li')
+    li.classList.add('nav-item')
+    li.innerHTML = `
+    <li><a href="#" data-bs-toggle="modal" data-bs-target="#task" class="delete text-success fw-bold text-decoration-none">${project.topic}</a></li>
+    `
+    newul.appendChild(li);
+    ul.appendChild(newul)
+  }
 }
-
-
-
 export default Display

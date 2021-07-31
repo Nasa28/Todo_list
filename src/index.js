@@ -5,11 +5,14 @@ import Display from "./display";
 import Task from './task'
 import Store from './storage'
 import removeTask from './remove';
+import Project from "./project";
+// import Project from "./project";
  const main= document.getElementById('main-form');
- const content = document.getElementById('content');
-
+  const content = document.getElementById('content');
+const projectForm = document.getElementById('project-form')
+const topic = document.getElementById('proName')
  document.addEventListener('DOMContentLoaded', Display.displayTask())
-
+const next = document.getElementsByClassName('next')
 main.addEventListener('submit', (event) => {
   event.preventDefault();
     
@@ -30,4 +33,16 @@ content.addEventListener('click', (event) =>{
   removeTask(event.target)
   Store.deleteTodos(event.target.parentElement.previousElementSibling.firstElementChild.textContent)
 })
+
+projectForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+    
+  const newTopic = new Project(topic.value);
+    
+  Display.addProjects(newTopic) 
+  Store.addProject(newTopic) 
+  // window.location.reload();
+  Project.clearField();   
+
+});
 

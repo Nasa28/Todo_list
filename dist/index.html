@@ -11,18 +11,20 @@
   <h1 class = "display-4 text-center fw-bold">To-do List</h1>
   <div class="main">
     <nav>
-      <ul class="nav m-5" >
+      <ul class="nav" >
        <li class="nav-item">
         <input type="button" value="ALL Todos"  class = "fw-bold btn  btn-primary todos" data-bs-toggle="modal" data-bs-target="#all-todo">
        </li> 
       </ul>
-      <ul class="nav m-5">
+      <ul class="nav" >
        <li id = "prop" class="nav-item ">
         <input type="button" value="PROJECTS"  class = "fw-bold btn  btn-primary project" >
        </li> 
-       <li class="nav-item" data-bs-toggle="modal" data-bs-target="#project"><a href="#" class="nav-link fw-bold fs-5 ">NEW</a></li>
+       <div id="next">
+       <li class="nav-item" data-bs-toggle="modal" data-bs-target="#project"><a href="#" class="nav-link fw-bold fs-5 align-items-center next ">NEW</a></li>
+      </div>
       </ul>
-      <ul class="nav m-5">
+      <ul class="nav">
        <li class="nav-item">
         <input type="button" value="Add a Task"  class = "fw-bold btn btn-primary " data-bs-toggle="modal" data-bs-target="#task">
        </li> 
@@ -95,7 +97,7 @@
                       
                     </div>
                     <div class="form-group">
-                    <input type="submit" value="submit" class = "form-control fw-bold btn btn-primary">
+                    <input type="submit" value="create" class = "form-control fw-bold btn btn-primary">
                   </div>
                   </form>                  
                 </div>

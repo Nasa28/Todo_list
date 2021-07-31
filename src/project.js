@@ -1,6 +1,11 @@
 import './dom'
+
 export default class Project{
-  constructor(proName){
-    this.proName = proName
+  constructor(topic){
+    this.topic =topic
+  }
+
+  static clearField(){
+    topic.value = ''
   }
 }
