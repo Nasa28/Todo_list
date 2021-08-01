@@ -1,5 +1,5 @@
  import Store from './storage';
-  const content = document.getElementById('content');
+//  const content = document.getElementById('content');
  class Display{
   static displayTask(){ 
     const todos =Store.getTodos()
@@ -16,6 +16,7 @@
         <li class="list-group-item">${task.description}</li>
         <li class="list-group-item">${task.dueDate}</li>
         <li class="list-group-item">${task.priority}</li>
+        <li class="list-group-item">${task.selectProject}</li>
       </ul>
       <div class="card-footer">
         <a href="#" class="delete text-danger text-decoration-none fw-bold">Remove task</a>
@@ -43,7 +44,7 @@
     const li = document.createElement('li')
     li.classList.add('nav-item')
     li.innerHTML = `
-    <li><a href="#" data-bs-toggle="modal" data-bs-target="#task" class="delete text-success fw-bold text-decoration-none">${project.topic}</a></li>
+    <li><a href="#" class="delete text-success text-decoration-none fw-bold">${project.topic}</a></li>
     `
     newul.appendChild(li);
     ul.appendChild(newul)

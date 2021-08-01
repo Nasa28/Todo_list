@@ -7,12 +7,17 @@ import Store from './storage'
 import removeTask from './remove';
 import Project from "./project";
 // import Project from "./project";
+
  const main= document.getElementById('main-form');
   const content = document.getElementById('content');
 const projectForm = document.getElementById('project-form')
 const topic = document.getElementById('proName')
- document.addEventListener('DOMContentLoaded', Display.displayTask())
+
+const selectProject = document.getElementById('select-project')
+ document.addEventListener('DOMContentLoaded', Display.displayTask(), Display.displayProject())
+ 
 const next = document.getElementsByClassName('next')
+
 main.addEventListener('submit', (event) => {
   event.preventDefault();
     
@@ -20,12 +25,13 @@ main.addEventListener('submit', (event) => {
     title.value,
     description.value,
     dueDate.value,
-    priority.value
+    priority.value,
+    selectProject.value
   );
   Display.addTask(task) 
   Store.addTodos(task) 
-  window.location.reload();
-  Task.resetFields();   
+   window.location.reload();
+  // Task.resetFields();   
 
 });
 
@@ -38,11 +44,13 @@ projectForm.addEventListener('submit', (event) => {
   event.preventDefault();
     
   const newTopic = new Project(topic.value);
-    
-  Display.addProjects(newTopic) 
-  Store.addProject(newTopic) 
-  // window.location.reload();
-  Project.clearField();   
 
+  Store.addProject(newTopic) 
+    Display.addProjects(newTopic) 
+    window.location.reload();
 });
+
+
+const option = document.createElement('option')
+
 

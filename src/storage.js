@@ -25,22 +25,23 @@ class Store {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }
 
-  static getProjects(){
+  static getProject(){
     let projects;
     if(localStorage.getItem('projects') === null){
+     
       projects = [];
     }else {
       projects = JSON.parse(localStorage.getItem('projects'));
     }
     return projects
   }
-
+  
   static addProject(project){
-    const projects = Store.getProjects()
+    const projects = Store.getProject()
     projects.push(project);
     localStorage.setItem('projects', JSON.stringify(projects))
   }
- 
+  
   static deleteProject(proName){
     const projects = Store.getProjects()
     projects.forEach((project, index) =>{
@@ -50,6 +51,7 @@ class Store {
     })
     localStorage.setItem('projects', JSON.stringify(projects))
   }
+
 }
 
 export default Store

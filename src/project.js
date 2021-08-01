@@ -2,10 +2,10 @@ import './dom'
 
 export default class Project{
   constructor(topic){
-    this.topic =topic
+    this.topic = topic
   }
 
-  static clearField(){
-    topic.value = ''
-  }
+  // static clearField(){
+  //   topic.value = ' '
+  // }
 }

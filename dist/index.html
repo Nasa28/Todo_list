@@ -64,12 +64,22 @@
 
                     <div class = "form-group mb-3">
                       <label for="priority"> priority</label><br>
-                      <select name="priority" id="priority"  required> 
+                      <select class="form-select" name="priority" id="priority"  required> 
                         <option value="High" id="high" >High</option>
                         <option value="Medium" id="medium">Medium</option>
                         <option value="Low" id="low">Low</option>
                       </select>
                     </div>
+
+                    <div class="mb-3">
+                      <label for="choose">Choose a project</label>
+                      <select
+                        class="form-select"
+                        id="select-project"
+                        required
+                      ><option value="Medium" id="medium">Medium</option></select>
+                    </div>
+
                     <div class="form-group">
                     <input type="submit" value="Submit" class = "form-control fw-bold btn btn-primary">
                   </div>
