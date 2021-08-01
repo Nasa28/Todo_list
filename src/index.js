@@ -13,10 +13,11 @@ import Project from "./project";
 const projectForm = document.getElementById('project-form')
 const topic = document.getElementById('proName')
 
-const selectProject = document.getElementById('select-project')
+
+
  document.addEventListener('DOMContentLoaded', Display.displayTask(), Display.displayProject())
  
-const next = document.getElementsByClassName('next')
+const next = document.getElementById('next')
 
 main.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -26,12 +27,10 @@ main.addEventListener('submit', (event) => {
     description.value,
     dueDate.value,
     priority.value,
-    selectProject.value
   );
   Display.addTask(task) 
   Store.addTodos(task) 
-   window.location.reload();
-  // Task.resetFields();   
+   window.location.reload(); 
 
 });
 
@@ -50,7 +49,13 @@ projectForm.addEventListener('submit', (event) => {
     window.location.reload();
 });
 
+next.addEventListener('click', (event) =>{
+  const value = event.target.textContent;
+     content.innerHTML = ''
+     const h2 = document.createElement('h2');
+     h2.textContent = value
+    content.appendChild(h2)  
+})
 
-const option = document.createElement('option')
 
 
