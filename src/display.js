@@ -16,7 +16,7 @@
         <li class="list-group-item">${task.description}</li>
         <li class="list-group-item">${task.dueDate}</li>
         <li class="list-group-item">${task.priority}</li>
-        <li class="list-group-item ">${task.project}</li>
+        <li class="list-group-item d-none ">${task.project}</li>
       </ul>
       <div class="card-footer">
         <a href="#" class="delete text-danger text-decoration-none fw-bold">Remove task</a>

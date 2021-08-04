@@ -53,6 +53,11 @@ next.addEventListener('click', (event) =>{
      const h2 = document.createElement('h2');
      h2.textContent = value
      content.appendChild(h2)  
+
+     const todos =Store.getTodos()
+     for(let task of todos)
+     if (task.project === value)
+     Display.addTask(task)    
 })
 
 
