@@ -16,6 +16,7 @@
         <li class="list-group-item">${task.description}</li>
         <li class="list-group-item">${task.dueDate}</li>
         <li class="list-group-item">${task.priority}</li>
+        <li class="list-group-item ">${task.project}</li>
       </ul>
       <div class="card-footer">
         <a href="#" class="delete text-danger text-decoration-none fw-bold">Remove task</a>
@@ -48,5 +49,18 @@
     newul.appendChild(li);
     ul.appendChild(newul)
   }
+  static displayProjectTask(){ 
+    const projects =Store.getProject()
+    for(let project of projects)
+    Display.addProjectTask(project)
+  }
+  
+static addProjectTask(task){
+  const project = document.getElementById("select-project");
+  const option = document.createElement("option");
+  option.innerHTML =`<option value="High" id="high" >${task.topic}</option>`;
+  project.add(option);
+}
+  
 }
 export default Display
