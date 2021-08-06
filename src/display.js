@@ -32,7 +32,6 @@
     }
   }
 
-
   static displayProject(){ 
     const projects =Store.getProject()
     for(let project of projects)
@@ -43,9 +42,13 @@
     const newul = document.createElement('ul')
     const li = document.createElement('li')
     li.classList.add('nav-item')
+    li.setAttribute("onclick", (e)=>{
+      li.classList.add("text-me")
+    })
     li.innerHTML = `
-    <li><a href="#" class="delete text-success pros text-decoration-none fw-bold">${project.topic}</a></li>
+    <li><a href="#" class="my-project text-success pros text-decoration-none fw-bold">${project.topic}</a></li>
     `
+
     newul.appendChild(li);
     ul.appendChild(newul)
   }

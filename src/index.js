@@ -12,7 +12,7 @@ const project = document.getElementById("select-project");
 const projectForm = document.getElementById('project-form')
 const topic = document.getElementById('proName')
 
- document.addEventListener('DOMContentLoaded', Display.displayTask(), Display.displayProject(), Display.displayProjectTask())
+ document.addEventListener('DOMContentLoaded', Display.displayProject(), Display.displayProjectTask())
  
 const next = document.getElementById('next')
 
@@ -58,6 +58,19 @@ next.addEventListener('click', (event) =>{
      for(let task of todos)
      if (task.project === value)
      Display.addTask(task)    
+})
+const allTodos = document.getElementById('all-todos')
+
+allTodos.addEventListener('click', (event) =>{
+  const todo = event.target.value.toUpperCase();
+  content.innerHTML = ''
+  const h2 = document.createElement('h2');
+  h2.textContent = todo
+  content.appendChild(h2)  
+  document.addEventListener('DOMContentLoaded', Display.displayTask())
+  // for(let task of todos)
+  // if (task.project === value)
+  // Display.addTask(task)    
 })
 
 
