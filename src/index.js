@@ -6,11 +6,11 @@ import Task from './task'
 import Store from './storage'
 import removeTask from './remove';
 import Project from "./project";
-import editTask from "./edit";
 const newTitle = document.getElementById('edit-title')
 const newDescription = document.getElementById('edit-description')
 const newDuedate = document.getElementById('edit-dueDate')
 const newPriority = document.getElementById('edit-priority')
+const newProject = document.getElementById("edit-select-project");
 const project = document.getElementById("select-project");
  const main= document.getElementById('main-form');
  const editForm= document.getElementById('edit-form');
@@ -44,18 +44,18 @@ main.addEventListener('submit', (event) => {
   Store.deleteTodos(event.target.parentElement.previousElementSibling.firstElementChild.nextElementSibling.textContent);
 })
 
-  // content.addEventListener('click', (event)=>{
-  //   const value = event.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent
+  content.addEventListener('click', (event)=>{
+    const value = event.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent
     
-  //   const todos =Store.getTodos()
-  //   for(let task of todos)
-  //   if (task.id === value)
-  //   newTitle.value = task.title,
-  //   newDescription.value = task.description,
-  //   newDuedate.value = task.dueDate,
-  //   newPriority.value = task.priority,
-  //  console.log(task.parentElement.parentElement)
-  // })
+    const todos =Store.getTodos()
+    for(let task of todos)
+    if (task.id === value)
+    newTitle.value = task.title,
+    newDescription.value = task.description,
+    newDuedate.value = task.dueDate,
+    newPriority.value = task.priority,
+    newProject.value = task.project
+  })
 
   editForm.addEventListener('submit', (event)=>{
     event.preventDefault()
@@ -107,13 +107,6 @@ allTodos.addEventListener('click', (event) =>{
   document.addEventListener('DOMContentLoaded', Display.displayTask())   
 })
 
-// const props = document.getElementById('prop')
-
-// props.addEventListener('click', (event) =>{
-//   event.preventDefault()
-//   const todo = event.target
-//     document.addEventListener('DOMContentLoaded', )
-// })
 
 
 

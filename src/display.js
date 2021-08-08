@@ -30,7 +30,7 @@
     `;
     content.appendChild(div)
   }
-  
+
   static displayProject(){ 
     const projects =Store.getProject()
     for(let project of projects)
@@ -41,9 +41,9 @@
     const newul = document.createElement('ul')
     const li = document.createElement('li')
     li.classList.add('nav-item')
-    li.setAttribute("onclick", (e)=>{
-      li.classList.add("text-me")
-    })
+    // li.setAttribute("onclick", (e)=>{
+    //   li.classList.add("text-me")
+    // })
     li.innerHTML = `
     <li><a href="#" class="my-project text-success pros text-decoration-none fw-bold">${project.topic}</a></li>
     `
@@ -62,7 +62,9 @@
 static addProjectTask(task){
   const project = document.getElementById("select-project");
   const option = document.createElement("option");
-  option.innerHTML =`<option value="High" id="high" >${task.topic}</option>`;
+  option.innerHTML =`
+  <option>${task.topic}</option>
+  `;
   project.add(option);
 }
 
