@@ -6,13 +6,19 @@ import Task from './task'
 import Store from './storage'
 import removeTask from './remove';
 import Project from "./project";
+import editTask from "./edit";
+const newTitle = document.getElementById('edit-title')
+const newDescription = document.getElementById('edit-description')
+const newDuedate = document.getElementById('edit-dueDate')
+const newPriority = document.getElementById('edit-priority')
 const project = document.getElementById("select-project");
  const main= document.getElementById('main-form');
+ const editForm= document.getElementById('edit-form');
   const content = document.getElementById('content');
 const projectForm = document.getElementById('project-form')
 const topic = document.getElementById('proName')
 
- document.addEventListener('DOMContentLoaded', Display.displayProject(), Display.displayProjectTask())
+ document.addEventListener('DOMContentLoaded', Display.displayProject(), Display.displayProjectTask(), Display.displayEditTask())
  
 const next = document.getElementById('next')
 
@@ -25,6 +31,7 @@ main.addEventListener('submit', (event) => {
     dueDate.value,
     priority.value,
     project.value
+  
   );
   Display.addTask(task) 
   Store.addTodos(task) 
@@ -32,10 +39,40 @@ main.addEventListener('submit', (event) => {
 
 });
 
-content.addEventListener('click', (event) =>{
+ content.addEventListener('click', (event) =>{
   removeTask(event.target)
-  Store.deleteTodos(event.target.parentElement.previousElementSibling.firstElementChild.textContent)
+  Store.deleteTodos(event.target.parentElement.previousElementSibling.firstElementChild.nextElementSibling.textContent);
 })
+
+  // content.addEventListener('click', (event)=>{
+  //   const value = event.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent
+    
+  //   const todos =Store.getTodos()
+  //   for(let task of todos)
+  //   if (task.id === value)
+  //   newTitle.value = task.title,
+  //   newDescription.value = task.description,
+  //   newDuedate.value = task.dueDate,
+  //   newPriority.value = task.priority,
+  //  console.log(task.parentElement.parentElement)
+  // })
+
+  editForm.addEventListener('submit', (event)=>{
+    event.preventDefault()
+
+    const task = new Task(
+      newTitle.value,
+      newDescription.value,
+      newDuedate.value,
+      newPriority.value,
+      project.value
+    
+    );
+    Display.addTask(task) 
+    Store.addTodos(task) 
+     window.location.reload();
+
+  })
 
 projectForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -67,11 +104,17 @@ allTodos.addEventListener('click', (event) =>{
   const h2 = document.createElement('h2');
   h2.textContent = todo
   content.appendChild(h2)  
-  document.addEventListener('DOMContentLoaded', Display.displayTask())
-  // for(let task of todos)
-  // if (task.project === value)
-  // Display.addTask(task)    
+  document.addEventListener('DOMContentLoaded', Display.displayTask())   
 })
+
+// const props = document.getElementById('prop')
+
+// props.addEventListener('click', (event) =>{
+//   event.preventDefault()
+//   const todo = event.target
+//     document.addEventListener('DOMContentLoaded', )
+// })
+
 
 
 

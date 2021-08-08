@@ -15,10 +15,10 @@ class Store {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }
  
-  static deleteTodos(title){
+  static deleteTodos(id){
     const tasks = Store.getTodos()
     tasks.forEach((task, index) =>{
-      if (task.title === title){
+      if (task.id === id){
         tasks.splice(index, 1)
       }
     })

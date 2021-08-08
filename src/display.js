@@ -1,4 +1,6 @@
  import Store from './storage';
+ import './task';
+ const div = document.createElement('div');
 //  const content = document.getElementById('content');
  class Display{
   static displayTask(){ 
@@ -9,14 +11,17 @@
     
   static addTask(task){
     const div = document.createElement('div');
+
     div.innerHTML = `
     <div class="card mb-5 border-3" style="width: 30rem;">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${task.title}</li>
+        <li class="list-group-item">${task.id}</li>
         <li class="list-group-item">${task.description}</li>
         <li class="list-group-item">${task.dueDate}</li>
         <li class="list-group-item">${task.priority}</li>
         <li class="list-group-item d-none ">${task.project}</li>
+        <li > <a href="#" class="edit text-primary text-decoration-none fw-bold" data-bs-toggle="modal" data-bs-target="#edit-task">Edit Task</a></li>
       </ul>
       <div class="card-footer">
         <a href="#" class="delete text-danger text-decoration-none fw-bold">Remove task</a>
@@ -25,13 +30,7 @@
     `;
     content.appendChild(div)
   }
-
-  static removeTask(ele){
-    if(ele.classList.contains('delete')){
-      ele.parentElement.parentElement.remove();
-    }
-  }
-
+  
   static displayProject(){ 
     const projects =Store.getProject()
     for(let project of projects)
@@ -57,6 +56,8 @@
     for(let project of projects)
     Display.addProjectTask(project)
   }
+
+  
   
 static addProjectTask(task){
   const project = document.getElementById("select-project");
@@ -64,6 +65,28 @@ static addProjectTask(task){
   option.innerHTML =`<option value="High" id="high" >${task.topic}</option>`;
   project.add(option);
 }
+
+static displayEditTask(){ 
+  const projects =Store.getProject()
+  for(let project of projects)
+  Display.editProjectTask(project)
+}
+
+
+static displayTask(){ 
+  const todos =Store.getTodos()
+  for(let task of todos)
+  Display.addTask(task)
+}
+
+static editProjectTask(task){
   
+  const project = document.getElementById("edit-select-project");
+  const option = document.createElement("option");
+  option.innerHTML =`<option value="High" id="high" >${task.topic}</option>`;
+  project.add(option);
+}
+  
+
 }
 export default Display
