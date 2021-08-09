@@ -15,7 +15,6 @@ nav {
   border: 1px solid;
   flex-direction: column;
   width: fit-content;
-  /* background:rgb(196, 191, 191); */
   height: 100%;
   text-align: center;
 }
@@ -31,14 +30,10 @@ display: flex;
 ul{
   list-style-type: none;
 }
-/* #main-form {
-  margin: 30px auto;
-  width: 80%;
-} */
 
 .card {
   width: 30rem;
-  margin: 10px auto;
+  margin: 5px auto;
 }
 
 .nav {
@@ -49,15 +44,7 @@ color: green;
 font-weight: bold;
 margin: 10px auto;
 text-align: center;
-/* padding-bottom: 10px; */
 }
-
-/* .next {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-} */
 
 .text-me{
   color: red;
