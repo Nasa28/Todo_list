@@ -1,30 +1,17 @@
 import "./assets/css/style.css";
 import 'bootstrap'
-import  './dom.js'
+import  * as dom from './dom.js'
 import Display from "./display";
 import Task from './task'
 import Store from './storage'
 import removeTask from './remove';
 import Project from "./project";
-const allTodos = document.getElementById('all-todos')
-const newContent = document.querySelector(".new-content")
-const newTitle = document.getElementById('edit-title')
-const newDescription = document.getElementById('edit-description')
-const newDuedate = document.getElementById('edit-dueDate')
-const newPriority = document.getElementById('edit-priority')
-const newProject = document.getElementById("edit-select-project");
-const project = document.getElementById("select-project");
- const main= document.getElementById('main-form');
- const editForm= document.getElementById('edit-form');
-  const content = document.getElementById('content');
-const projectForm = document.getElementById('project-form')
-const topic = document.getElementById('proName')
-const next = document.getElementById('next')
+
  document.addEventListener('DOMContentLoaded', Display.displayProject(), Display.displayProjectTask(), Display.displayEditTask())
  
 
 
-main.addEventListener('submit', (event) => {
+dom.main.addEventListener('submit', (event) => {
   event.preventDefault();
     
   const task = new Task(
@@ -41,32 +28,32 @@ main.addEventListener('submit', (event) => {
 
 });
 
- newContent.addEventListener('click', (event) =>{
+ dom.newContent.addEventListener('click', (event) =>{
   removeTask(event.target)
   Store.deleteTodos(event.target.parentElement.previousElementSibling.firstElementChild.nextElementSibling.textContent);
 })
 
-  content.addEventListener('click', (event)=>{
+ dom.content.addEventListener('click', (event)=>{
     const value = event.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent
     const todos =Store.getTodos()
     for(let task of todos)
     if (task.id === value){
-    newTitle.value = task.title,
-    newDescription.value = task.description,
-    newDuedate.value = task.dueDate,
-    newPriority.value = task.priority,
-    newProject.value = task.project}    
+    dom.newTitle.value = task.title,
+    dom.newDescription.value = task.description,
+    dom.newDuedate.value = task.dueDate,
+    dom.newPriority.value = task.priority,
+    dom.newProject.value = task.project}    
   })
 
-  editForm.addEventListener('submit', (event)=>{
+  dom.editForm.addEventListener('submit', (event)=>{
     event.preventDefault()
 
     const task = new Task(
-      newTitle.value,
-      newDescription.value,
-      newDuedate.value,
-      newPriority.value,
-      newProject.value
+      dom.newTitle.value,
+      dom.newDescription.value,
+      dom.newDuedate.value,
+      dom.newPriority.value,
+      dom.newProject.value
     
     );
     const tasks = Store.getTodos()
@@ -80,22 +67,22 @@ main.addEventListener('submit', (event) => {
 
   })
 
-projectForm.addEventListener('submit', (event) => {
+dom.projectForm.addEventListener('submit', (event) => {
   event.preventDefault();
     
-    const newTopic = new Project(topic.value);
+    const newTopic = new Project(dom.topic.value);
     Store.addProject(newTopic)  
     Display.addProjects(newTopic) 
     Display.addProjectTask(newTopic)
      window.location.reload();
 });
 
-next.addEventListener('click', (event) =>{
+dom.next.addEventListener('click', (event) =>{
      const value = event.target.textContent;
-     content.innerHTML = ''
+     dom.content.innerHTML = ''
      const h2 = document.createElement('h2');
      h2.textContent = value
-     content.appendChild(h2)  
+     dom.content.appendChild(h2)  
 
      const todos =Store.getTodos()
      for(let task of todos)
@@ -103,12 +90,12 @@ next.addEventListener('click', (event) =>{
      Display.addTask(task)    
 })
 
-allTodos.addEventListener('click', (event) =>{
+dom.allTodos.addEventListener('click', (event) =>{
   const todo = event.target.value.toUpperCase();
-  content.innerHTML = ''
+  dom.content.innerHTML = ''
   const h2 = document.createElement('h2');
   h2.textContent = todo
-  content.appendChild(h2)  
+  dom.content.appendChild(h2)  
   document.addEventListener('DOMContentLoaded', Display.displayTask())   
 })
 

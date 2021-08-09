@@ -1,6 +1,3 @@
-import "./display";
-import './dom'
-import './todos'
 class Task{
   constructor(title, description, dueDate, priority, project){
     this.title = title;

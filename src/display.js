@@ -1,7 +1,5 @@
  import Store from './storage';
- import './task';
  const div = document.createElement('div');
-//  const content = document.getElementById('content');
  class Display{
   static displayTask(){ 
     const todos =Store.getTodos()
@@ -41,9 +39,6 @@
     const newul = document.createElement('ul')
     const li = document.createElement('li')
     li.classList.add('nav-item')
-    // li.setAttribute("onclick", (e)=>{
-    //   li.classList.add("text-me")
-    // })
     li.innerHTML = `
    
     <li><a href="#" class="my-project text-success pros text-decoration-none fw-bold">${project.topic}</a></li>
@@ -89,7 +84,5 @@ static editProjectTask(task){
   option.innerHTML =`<option value="High" id="high" >${task.topic}</option>`;
   project.add(option);
 }
-  
-
 }
 export default Display
