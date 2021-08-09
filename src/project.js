@@ -1,5 +1,5 @@
-export default class Project{
-  constructor(topic){
+export default class Project {
+  constructor(topic) {
     this.topic = topic;
   }
 }

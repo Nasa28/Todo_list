@@ -1,13 +1,15 @@
- import Store from './storage';
- const div = document.createElement('div');
- class Display{
-  static displayTask(){ 
-    const todos =Store.getTodos()
-    for(let task of todos)
-    Display.addTask(task)
+import Store from './storage';
+import * as dom from './dom';
+
+class Display {
+  static displayTask() {
+    const todos = Store.getTodos();
+    todos.forEach((task) => {
+      Display.addTask(task);
+    });
   }
-    
-  static addTask(task){
+
+  static addTask(task) {
     const div = document.createElement('div');
 
     div.innerHTML = `
@@ -26,63 +28,58 @@
       </div>
     </div>
     `;
-    content.appendChild(div)
+    dom.content.appendChild(div);
   }
 
-  static displayProject(){ 
-    const projects =Store.getProject()
-    for(let project of projects)
-    Display.addProjects(project)
+  static displayProject() {
+    const projects = Store.getProject();
+    projects.forEach((project) => {
+      Display.addProjects(project);
+    });
   }
-  static addProjects(project){
-    const ul = document.getElementById('next')
-    const newul = document.createElement('ul')
-    const li = document.createElement('li')
-    li.classList.add('nav-item')
+
+  static addProjects(project) {
+    const ul = document.getElementById('next');
+    const newul = document.createElement('ul');
+    const li = document.createElement('li');
+    li.classList.add('nav-item');
     li.innerHTML = `
    
     <li><a href="#" class="my-project text-success pros text-decoration-none fw-bold">${project.topic}</a></li>
-    `
+    `;
 
     newul.appendChild(li);
-    ul.appendChild(newul)
-  }
-  static displayProjectTask(){ 
-    const projects =Store.getProject()
-    for(let project of projects)
-    Display.addProjectTask(project)
+    ul.appendChild(newul);
   }
 
-  
-  
-static addProjectTask(task){
-  const project = document.getElementById("select-project");
-  const option = document.createElement("option");
-  option.innerHTML =`
+  static displayProjectTask() {
+    const projects = Store.getProject();
+    projects.forEach((project) => {
+      Display.addProjectTask(project);
+    });
+  }
+
+  static addProjectTask(task) {
+    const project = document.getElementById('select-project');
+    const option = document.createElement('option');
+    option.innerHTML = `
   <option>${task.topic}</option>
   `;
-  project.add(option);
-}
+    project.add(option);
+  }
 
-static displayEditTask(){ 
-  const projects =Store.getProject()
-  for(let project of projects)
-  Display.editProjectTask(project)
-}
+  static displayEditTask() {
+    const projects = Store.getProject();
+    projects.forEach((project) => {
+      Display.editProjectTask(project);
+    });
+  }
 
-
-static displayTask(){ 
-  const todos =Store.getTodos()
-  for(let task of todos)
-  Display.addTask(task)
+  static editProjectTask(task) {
+    const project = document.getElementById('edit-select-project');
+    const option = document.createElement('option');
+    option.innerHTML = `<option value="High" id="high" >${task.topic}</option>`;
+    project.add(option);
+  }
 }
-
-static editProjectTask(task){
-  
-  const project = document.getElementById("edit-select-project");
-  const option = document.createElement("option");
-  option.innerHTML =`<option value="High" id="high" >${task.topic}</option>`;
-  project.add(option);
-}
-}
-export default Display
+export default Display;

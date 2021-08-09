@@ -5,7 +5,6 @@
 }
 
 h1 {
-  
   padding: 25px;
   background-color: rgb(207, 200, 214);
 }
@@ -19,15 +18,15 @@ nav {
   text-align: center;
 }
 
-.main{
-display: flex;
+.main {
+  display: flex;
 }
 
-.container{
+.container {
   text-align: center;
 }
 
-ul{
+ul {
   list-style-type: none;
 }
 
@@ -37,16 +36,16 @@ ul{
 }
 
 .nav {
-  margin:10px 20px;
-}
-.nav-item li{
-color: green;
-font-weight: bold;
-margin: 10px auto;
-text-align: center;
+  margin: 10px 20px;
 }
 
-.text-me{
+.nav-item li {
+  color: green;
+  font-weight: bold;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.text-me {
   color: red;
-
 }
