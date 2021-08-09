@@ -6,6 +6,8 @@ import Task from './task'
 import Store from './storage'
 import removeTask from './remove';
 import Project from "./project";
+const allTodos = document.getElementById('all-todos')
+const newContent = document.querySelector(".new-content")
 const newTitle = document.getElementById('edit-title')
 const newDescription = document.getElementById('edit-description')
 const newDuedate = document.getElementById('edit-dueDate')
@@ -17,10 +19,10 @@ const project = document.getElementById("select-project");
   const content = document.getElementById('content');
 const projectForm = document.getElementById('project-form')
 const topic = document.getElementById('proName')
-
+const next = document.getElementById('next')
  document.addEventListener('DOMContentLoaded', Display.displayProject(), Display.displayProjectTask(), Display.displayEditTask())
  
-const next = document.getElementById('next')
+
 
 main.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -39,22 +41,21 @@ main.addEventListener('submit', (event) => {
 
 });
 
- content.addEventListener('click', (event) =>{
+ newContent.addEventListener('click', (event) =>{
   removeTask(event.target)
   Store.deleteTodos(event.target.parentElement.previousElementSibling.firstElementChild.nextElementSibling.textContent);
 })
 
   content.addEventListener('click', (event)=>{
     const value = event.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent
-    
     const todos =Store.getTodos()
     for(let task of todos)
-    if (task.id === value)
+    if (task.id === value){
     newTitle.value = task.title,
     newDescription.value = task.description,
     newDuedate.value = task.dueDate,
     newPriority.value = task.priority,
-    newProject.value = task.project
+    newProject.value = task.project}    
   })
 
   editForm.addEventListener('submit', (event)=>{
@@ -65,9 +66,14 @@ main.addEventListener('submit', (event) => {
       newDescription.value,
       newDuedate.value,
       newPriority.value,
-      project.value
+      newProject.value
     
     );
+    const tasks = Store.getTodos()
+    tasks.forEach((index) =>{
+      tasks.splice(index, 1)
+    })
+    localStorage.setItem('tasks', JSON.stringify(tasks))
     Display.addTask(task) 
     Store.addTodos(task) 
      window.location.reload();
@@ -96,7 +102,6 @@ next.addEventListener('click', (event) =>{
      if (task.project === value)
      Display.addTask(task)    
 })
-const allTodos = document.getElementById('all-todos')
 
 allTodos.addEventListener('click', (event) =>{
   const todo = event.target.value.toUpperCase();
