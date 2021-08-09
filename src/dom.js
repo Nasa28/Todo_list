@@ -1,13 +1,10 @@
-
    export const content = document.getElementById('content');
    export const title = document.getElementById('title');
    export const description = document.getElementById('description');
    export const dueDate = document.getElementById('dueDate');
    export const priority = document.getElementById('priority')
    export const projectName = document.getElementById('proName')
-    // const selectProject = document.getElementById('select-project')
    export const main = document.getElementById('main-form');
-
    export const allTodos = document.getElementById('all-todos')
    export const newContent = document.querySelector(".new-content")
    export const newTitle = document.getElementById('edit-title')
