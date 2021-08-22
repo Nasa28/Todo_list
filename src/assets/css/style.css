@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  padding: 25px;
+  background-color: rgb(207, 200, 214);
+}
+
+nav {
+  display: flex;
+  border: 1px solid;
+  flex-direction: column;
+  width: fit-content;
+  height: 100%;
+  text-align: center;
+}
+
+.main {
+  display: flex;
+}
+
+.container {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.card {
+  width: 30rem;
+  margin: 5px auto;
+}
+
+.nav {
+  margin: 10px 20px;
+}
+
+.nav-item li {
+  color: green;
+  font-weight: bold;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.text-me {
+  color: red;
+}
