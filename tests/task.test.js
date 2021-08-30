@@ -13,4 +13,24 @@ describe("test task constructor function", ()=>{
   it('test presence of description', ()=>{
     expect(task.description).toBe("tea is great")
   })
+
+  it('test presence of dueDate', ()=>{
+    expect(task.dueDate).toBe(2-9-2021)
+  })
+
+  it('test presence of dueDate', ()=>{
+    expect(task.dueDate).not.toBe(null)
+  })
+
+  it('test presence of priority', ()=>{
+    expect(task.priority).toBe('high')
+  })
+
+  it('test presence of project', ()=>{
+    expect(task.project).toBe('new')
+  })
+
+  it('test presence of priority', ()=>{
+    expect(task.id).not.toBe(null)
+  })
 })
