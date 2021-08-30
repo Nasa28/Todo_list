@@ -1,4 +1,3 @@
-import { expect, it } from "@jest/globals";
 import Task from "../src/task";
 describe("test task constructor function", ()=>{
   const task = new Task("Tea", "tea is great", 2-9-2021,"high",'new')
@@ -32,5 +31,9 @@ describe("test task constructor function", ()=>{
 
   it('test presence of priority', ()=>{
     expect(task.id).not.toBe(null)
+  })
+
+  it('tests typeOf task', ()=>{
+    expect(typeof task).toBe('object')
   })
 })
