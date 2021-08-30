@@ -9,4 +9,8 @@ describe("test task constructor function", ()=>{
   it('test presence of title', ()=>{
     expect(task.title).toBe("Tea")
   })
+
+  it('test presence of description', ()=>{
+    expect(task.description).toBe("tea is great")
+  })
 })
