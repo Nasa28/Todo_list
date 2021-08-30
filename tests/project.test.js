@@ -6,14 +6,22 @@ describe('Project class', () =>{
     const project = new Project()
     expect(project).toBeDefined();
   })
-
-  test('test project name', ()=>{
-    const project = new Project("myProject")
+  const project = new Project("myProject")
+  it('test project name', ()=>{
+    
     expect(project.topic).toBe("myProject")
   })
-
-  test('tests for wrong project name', ()=>{
-    const project = new Project("myProject")
+  it('tests for wrong project name', ()=>{
     expect(project.topic).not.toBe("Project")
   })
+
+  it('tests typeOf topic', ()=>{
+    expect(typeof project.topic).toBe('string')
+  })
+
+  it('tests typeOf project', ()=>{
+    expect(typeof project).toBe('object')
+  })
+
+  
 })
