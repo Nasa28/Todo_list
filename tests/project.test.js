@@ -23,5 +23,4 @@ describe('Project class', () =>{
     expect(typeof project).toBe('object')
   })
 
-  
 })
