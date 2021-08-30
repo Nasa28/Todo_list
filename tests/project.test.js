@@ -6,4 +6,9 @@ describe('Project class', () =>{
     const project = new Project()
     expect(project).toBeDefined();
   })
+
+  test('test project name', ()=>{
+    const project = new Project("myProject")
+    expect(project.topic).toBe("myProject")
+  })
 })
