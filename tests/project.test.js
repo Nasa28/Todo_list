@@ -11,4 +11,9 @@ describe('Project class', () =>{
     const project = new Project("myProject")
     expect(project.topic).toBe("myProject")
   })
+
+  test('tests for wrong project name', ()=>{
+    const project = new Project("myProject")
+    expect(project.topic).not.toBe("Project")
+  })
 })
