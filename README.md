@@ -39,7 +39,7 @@ On your terminal, run
 
 To run the test suites, you need to follow the steps below:
 
-- run `npm install --save-dev jest` to install `jest` dependency. then
+- run `npm install --save-dev jest` to install `jest` dependency, then
 - run `npm test` to run all tests.
 
 ## Authors
