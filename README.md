@@ -31,14 +31,16 @@ On your terminal, run
 
 - open the project using code editor of your choice
 
-- Open the `index.html` file with your browser
+- cd into `dist` and 
+
+- Open the `index.html` file with your browser.
 
 ### Running Test
 
 To run the test suites, you need to follow the steps below:
 
 - run `npm install --save-dev jest` to install `jest` dependency. then
-- run `npm test`
+- run `npm test` to run all tests.
 
 ## Authors
 
