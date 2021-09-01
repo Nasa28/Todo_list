@@ -33,6 +33,13 @@ On your terminal, run
 
 - Open the `index.html` file with your browser
 
+### Running Test
+
+To run the test suites, you need to follow the steps below:
+
+- run `npm install --save-dev jest` to install `jest` dependency. then
+- run `npm test`
+
 ## Authors
 
 👨‍💻 **Kalu Chinasa Agu**
